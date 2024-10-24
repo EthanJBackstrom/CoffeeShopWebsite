@@ -1,0 +1,46 @@
+@page
+@model MyRestaurant.Pages.MenuModel
+@{
+    ViewData["Title"] = "Menu";
+}
+
+<h2>Our Menu</h2>
+
+<img src="/images/coffee-bag.jpg" alt="coffee-bag" style="max-width: 200px; height: auto;">
+
+<div class="menu-container">
+    @if (Model.MenuItems != null && Model.MenuItems.Any())
+    {
+        <ul>
+            @foreach (var item in Model.MenuItems)
+            {
+                <li>
+                    <h3>@item.Name</h3>
+                    <p>@item.Description</p>
+                    <p><strong>Price: </strong>£@item.Price</p>
+                </li>
+            }
+        </ul>
+    }
+    else
+    {
+        <p>No menu items available at this time.</p>
+    }
+</div>
+
+<style>
+    .menu-container {
+        max-width: 800px;
+        margin: auto;
+    }
+
+    ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    li {
+        margin-bottom: 20px;
+    }
+</style>
+
