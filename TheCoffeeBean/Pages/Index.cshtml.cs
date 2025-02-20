@@ -1,25 +1,30 @@
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using CoffeeBean.data;
+using TheCoffeeBean.Data;
+using TheCoffeeBean.Data.Models; 
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
-using System.Linq;
+using System.Threading.Tasks;
 
-namespace TheCoffeeBean.Pages;
-
-public class IndexModel : PageModel
+namespace TheCoffeeBean.Pages
 {
-    private readonly ILogger<IndexModel> _logger;
-
-    public IndexModel(ILogger<IndexModel> logger)
+    public class IndexModel : PageModel
     {
-        _logger = logger;
-    }
-    
-    public List<Product> Products { get; set; }
+        private readonly ILogger<IndexModel> _logger;
+        private readonly ApplicationDbContext _context;
 
-    public void OnGet()
-    {
-        Products = _context.Products.Take(3).ToList();
+        public IndexModel(ILogger<IndexModel> logger, ApplicationDbContext context)
+        {
+            _logger = logger;
+            _context = context;
+        }
 
+        public IList<Product> Products { get; set; } = new List<Product>();
+
+        public async Task OnGetAsync()
+        {
+            Products = await _context.Products
+                .Take(3) 
+                .ToListAsync();
+        }
     }
 }

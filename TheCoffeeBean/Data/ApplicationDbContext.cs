@@ -1,6 +1,5 @@
-using Microsoft.EntityFrameworkCore;
-using TheCoffeeBean.Models;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore; 
+using TheCoffeeBean.Data.Models;
 
 
 public class ApplicationDbContext : DbContext
