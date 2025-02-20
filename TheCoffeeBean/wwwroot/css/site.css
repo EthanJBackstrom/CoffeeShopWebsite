@@ -18,5 +18,130 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+  color: #333;
+}
+
+.container {
+  background-image: url('/images/Main.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  align-items: center;
+}
+
+.container h1 {
+  font-size: 4rem;
+  font-weight: 700;
+}
+.container p {
+  font-size: 2rem;
+  margin-top: 10px;
+}
+.container .btn {
+  background-color: #c69c6D;
+  border: none;
+  padding: 10px 30px;
+  font-size: 1rem;
+  margin-top: 20px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #2c3e50;
+}
+
+a {
+  text-decoration: none;
+  color: #3498db;
+}
+.btn {
+  display: inline-block;
+  padding: 6px 12px;
+  background-color: #3498db;
+  color: #fff;
+  border-radius: 4px;
+}
+
+.btn:hover {
+  background-color: #2980b9;
+}
+
+.entry-section {
+  text-align: center;
+  padding-top: 90px;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/images/coffee-main.jpg');
+  background-size: cover;
+  background-position: center;
+  color: white;
+}
+.entry-section h1 {
+  font-size: 50px;
+  margin-bottom: 10px;
+}
+.entry-section p {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+.Featured-Coffee {
+  text-align: center;
+  padding-top: 50px;
+}
+.featured-products h2 {
+  font-size: 50px;
+  margin-bottom: 40px;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 10px;
+}
+
+.product-card{
+  background: white;
+  border: 1px solid #e4e4e4;
+  border-radius: 10px;
+  overflow: hidden;
+  
+}
+.product-card img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.product-card h3 {
+  font-size: 50px;
+  margin-bottom: 10px;
+}
+.product-card p {
+  padding: 0 15px;
+  color: #2c3e50;
+}
+
+.product-card .btn {
+  display: block;
+  margin-bottom: 10px;
+  width: 80%;
+}
+
+.Signup-Section {
+  text-align: center;
+  padding-top: 50px;
+  background: #f8f9fa;
+}
+
+.Signup-Section h2 {
+  font-size: 50px;
+  margin-bottom: 20px;
+}
+.Signup-Section p {
+  font-size: 20px;
+  margin-bottom: 10px;
 }

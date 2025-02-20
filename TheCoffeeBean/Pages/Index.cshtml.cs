@@ -1,5 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using CoffeeBean.data;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace TheCoffeeBean.Pages;
 
@@ -11,9 +14,12 @@ public class IndexModel : PageModel
     {
         _logger = logger;
     }
+    
+    public List<Product> Products { get; set; }
 
     public void OnGet()
     {
+        Products = _context.Products.Take(3).ToList();
 
     }
 }

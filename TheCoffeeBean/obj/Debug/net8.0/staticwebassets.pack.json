@@ -13,6 +13,10 @@
       "PackagePath": "staticwebassets/favicon.ico"
     },
     {
+      "Id": "/home/ethan/Documents/webapp/TheCoffeeBean/wwwroot/images/coffee-bag.jpg",
+      "PackagePath": "staticwebassets/images/coffee-bag.jpg"
+    },
+    {
       "Id": "/home/ethan/Documents/webapp/TheCoffeeBean/wwwroot/js/site.js",
       "PackagePath": "staticwebassets/js/site.js"
     },

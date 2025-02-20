@@ -28,3 +28,4 @@
 /home/ethan/Documents/webapp/TheCoffeeBean/obj/Debug/net8.0/TheCoffeeBean.pdb
 /home/ethan/Documents/webapp/TheCoffeeBean/obj/Debug/net8.0/TheCoffeeBean.genruntimeconfig.cache
 /home/ethan/Documents/webapp/TheCoffeeBean/obj/Debug/net8.0/ref/TheCoffeeBean.dll
+/home/ethan/Documents/webapp/TheCoffeeBean/obj/Debug/net8.0/TheCoffeeBean.csproj.AssemblyReference.cache

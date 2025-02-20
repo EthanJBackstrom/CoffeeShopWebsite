@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Nkc5jIjslK/UmTsetQv/acP2Imxko1mWXnSWljKJSXY=",
+  "Hash": "r2FIFnWNBTo4Oz++sDnPUAvntf0xk+7KIGxpyUSCc/w=",
   "Source": "TheCoffeeBean",
   "BasePath": "_content/TheCoffeeBean",
   "Mode": "Default",
@@ -91,6 +91,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/favicon.ico"
+    },
+    {
+      "Identity": "/home/ethan/Documents/webapp/TheCoffeeBean/wwwroot/images/coffee-bag.jpg",
+      "SourceId": "TheCoffeeBean",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/ethan/Documents/webapp/TheCoffeeBean/wwwroot/",
+      "BasePath": "_content/TheCoffeeBean",
+      "RelativePath": "images/coffee-bag.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/images/coffee-bag.jpg"
     },
     {
       "Identity": "/home/ethan/Documents/webapp/TheCoffeeBean/wwwroot/js/site.js",
