@@ -13,12 +13,12 @@ a {
 
 a:hover a:focus {
   color: #C69C6D;
-  text-decoration: underline; /* Text Decortation hover colour (Mozilla.org reference)  https://developer.mozilla.org/en-US/docs/Web/CSS/text-decoration-color */
+  text-decoration: underline;
 
 .btn-primary {
   color: #fff;
   background-color: #4B3D30;
-  padding: 0.6rem 1.2rem; /* Increase the padding making the clickable areas more user freindly */
+  padding: 0.6rem 1.2rem; 
   border-color: #C69C6D;
 }
 

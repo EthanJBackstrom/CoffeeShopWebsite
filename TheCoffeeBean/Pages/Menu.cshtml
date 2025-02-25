@@ -1,46 +1,28 @@
 @page
-@model MyRestaurant.Pages.MenuModel
+@model TheCoffeeBean.Pages.MenuModel
 @{
     ViewData["Title"] = "Menu";
 }
 
-<h2>Our Menu</h2>
+<h2>Menu</h2>
 
-<img src="/images/coffee-bag.jpg" alt="coffee-bag" style="max-width: 200px; height: auto;">
-
-<div class="menu-container">
-    @if (Model.MenuItems != null && Model.MenuItems.Any())
+<div class="row">
+    @foreach (var product in Model.Products)
     {
-        <ul>
-            @foreach (var item in Model.MenuItems)
-            {
-                <li>
-                    <h3>@item.Name</h3>
-                    <p>@item.Description</p>
-                    <p><strong>Price: </strong>£@item.Price</p>
-                </li>
-            }
-        </ul>
-    }
-    else
-    {
-        <p>No menu items available at this time.</p>
+        <div class="col-md-4">
+            <div class="card mb-4 shadow-sm">
+                @if (!string.IsNullOrEmpty(product.ImageUrl))
+                {
+                    <img src="@product.ImageUrl" class="card-img-top" alt="@product.Name" />
+                }
+                <div class="card-body">
+                    <h5 class="card-title">@product.Name</h5>
+                    <p class="card-text">@product.Description</p>
+                    <p class="card-text"><strong>@product.Price.ToString("C")</strong></p>
+                    
+                    <a class="btn btn-primary" asp-page="/Checkout">Add product to Cart</a>
+                </div>
+            </div>
+        </div>
     }
 </div>
-
-<style>
-    .menu-container {
-        max-width: 800px;
-        margin: auto;
-    }
-
-    ul {
-        list-style: none;
-        padding: 0;
-    }
-
-    li {
-        margin-bottom: 20px;
-    }
-</style>
-

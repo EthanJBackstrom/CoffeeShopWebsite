@@ -2,7 +2,7 @@
   "Files": [
     {
       "Id": "/home/ethan/Documents/webapp/TheCoffeeBean/obj/Debug/net8.0/scopedcss/projectbundle/TheCoffeeBean.bundle.scp.css",
-      "PackagePath": "staticwebassets/TheCoffeeBean.2enfa5o592.bundle.scp.css"
+      "PackagePath": "staticwebassets/TheCoffeeBean.bundle.scp.css"
     },
     {
       "Id": "/home/ethan/Documents/webapp/TheCoffeeBean/wwwroot/css/site.css",
@@ -251,10 +251,6 @@
     {
       "Id": "/home/ethan/Documents/webapp/TheCoffeeBean/wwwroot/lib/jquery/dist/jquery.min.map",
       "PackagePath": "staticwebassets/lib/jquery/dist/jquery.min.map"
-    },
-    {
-      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.TheCoffeeBean.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
-      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
     },
     {
       "Id": "obj/Debug/net8.0/staticwebassets/msbuild.TheCoffeeBean.Microsoft.AspNetCore.StaticWebAssets.props",

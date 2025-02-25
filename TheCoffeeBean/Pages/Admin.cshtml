@@ -1,0 +1,67 @@
+﻿@page
+@model TheCoffeeBean.Pages.Admin.AdminModel
+@{
+    ViewData["Title"] = "Admin Dashboard";
+}
+
+<h2>Admin Dashboard</h2>
+
+<!-- Inline Add Product Form -->
+<div class="mb-4">
+    <h4>Add New Product</h4>
+    <form method="post" asp-page-handler="AddProduct">
+        <div class="form-group">
+            <label asp-for="NewProduct.Name"></label>
+            <input asp-for="NewProduct.Name" class="form-control" />
+            <span asp-validation-for="NewProduct.Name" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="NewProduct.Description"></label>
+            <input asp-for="NewProduct.Description" class="form-control" />
+            <span asp-validation-for="NewProduct.Description" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="NewProduct.Price"></label>
+            <input asp-for="NewProduct.Price" class="form-control" />
+            <span asp-validation-for="NewProduct.Price" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="NewProduct.ImageUrl"></label>
+            <input asp-for="NewProduct.ImageUrl" class="form-control" />
+            <span asp-validation-for="NewProduct.ImageUrl" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-primary">Add Product</button>
+    </form>
+</div>
+
+<!-- Product List -->
+<table class="table table-bordered">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th>Image URL</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var product in Model.Products)
+    {
+        <tr>
+            <td>@product.Name</td>
+            <td>@product.Description</td>
+            <td>@product.Price.ToString("C")</td>
+            <td>@product.ImageUrl</td>
+            <td>
+                <a class="btn btn-primary" asp-page="/Admin/EditProduct" asp-route-id="@product.Id">Edit</a>
+                <a class="btn btn-danger" asp-page="/Admin/DeleteProduct" asp-route-id="@product.Id">Delete</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
