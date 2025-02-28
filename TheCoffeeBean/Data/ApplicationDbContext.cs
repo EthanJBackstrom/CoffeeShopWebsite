@@ -11,29 +11,41 @@ namespace TheCoffeeBean.Data
         {
         }
 
-        public DbSet<Product> Products { get; set; }
-        public DbSet<Order> Orders { get; set; }
-        public DbSet<OrderItem> OrderItems { get; set; }
-        public DbSet<Payment> Payments { get; set; }
+   
+        public DbSet<Product> Products { get; set; } = default!;
+
+       
+        public DbSet<OrderHistory> OrderHistories { get; set; } = default!;
+        public DbSet<OrderItem> OrderItems { get; set; } = default!;
+
+        
+        public DbSet<Payment> Payments { get; set; } = default!;
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+           
+            modelBuilder.Entity<OrderItem>()
+                .HasKey(oi => new { oi.OrderNo, oi.StockID });
+
             
             modelBuilder.Entity<OrderItem>()
-                .HasOne(oi => oi.Order)
-                .WithMany(o => o.OrderItems)
-                .HasForeignKey(oi => oi.OrderId);
-            
+                .HasOne(oi => oi.OrderHistory)
+                .WithMany(h => h.OrderItems)
+                .HasForeignKey(oi => oi.OrderNo);
+
+          
             modelBuilder.Entity<OrderItem>()
                 .HasOne(oi => oi.Product)
                 .WithMany()
-                .HasForeignKey(oi => oi.ProductId);
-            
+                .HasForeignKey(oi => oi.StockID);
+
+        
             modelBuilder.Entity<Payment>()
-                .HasOne(p => p.Order)
+                .HasOne(p => p.OrderHistory)
                 .WithMany()
-                .HasForeignKey(p => p.OrderId);
+                .HasForeignKey(p => p.OrderNo);
         }
     }
 }
