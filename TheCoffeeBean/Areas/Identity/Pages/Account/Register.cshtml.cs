@@ -17,7 +17,9 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
+using Microsoft.EntityFrameworkCore.Scaffolding.Metadata;
 using Microsoft.Extensions.Logging;
+using TheCoffeeBean.Data;
 
 namespace TheCoffeeBean.Areas.Identity.Pages.Account
 {
@@ -29,13 +31,18 @@ namespace TheCoffeeBean.Areas.Identity.Pages.Account
         private readonly IUserEmailStore<IdentityUser> _emailStore;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
+        
+        private ApplicationDbContext _db;
+        public CheckoutCustomer Customer = new CheckoutCustomer();
+        public Basket Basket = new DatabaseForeignKey();
 
         public RegisterModel(
             UserManager<IdentityUser> userManager,
             IUserStore<IdentityUser> userStore,
             SignInManager<IdentityUser> signInManager,
             ILogger<RegisterModel> logger,
-            IEmailSender emailSender)
+            IEmailSender emailSender
+                ApplicationDbContext)
         {
             _userManager = userManager;
             _userStore = userStore;
@@ -43,6 +50,8 @@ namespace TheCoffeeBean.Areas.Identity.Pages.Account
             _signInManager = signInManager;
             _logger = logger;
             _emailSender = emailSender;
+            _db = _db;
+
         }
 
         /// <summary>
@@ -141,6 +150,8 @@ namespace TheCoffeeBean.Areas.Identity.Pages.Account
                     else
                     {
                         await _signInManager.SignInAsync(user, isPersistent: false);
+                        NewBasket();
+                        NewCustomer(Input.Email);
                         return LocalRedirect(returnUrl);
                     }
                 }
@@ -152,6 +163,25 @@ namespace TheCoffeeBean.Areas.Identity.Pages.Account
 
             // If we got this far, something failed, redisplay form
             return Page();
+        }
+
+        public void NewBasket()
+        {
+            var currentBasket = _db.Baskets.FromsqlRaw("SELECT * FROM Baskets");
+                .OrderByDescending(b => b.BasketId)
+                .FirstOrDefault();
+            if (currentBasket == null)
+            {
+                Basket.BasketID = 1;
+            }
+            else
+            {
+                Basket.BasketID = currentBasket.BasketID + 1;
+            }
+            _db.Baskets.Add(Basket);
+            _db.SaveChanges();
+
+
         }
 
         private IdentityUser CreateUser()

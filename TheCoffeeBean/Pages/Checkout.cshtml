@@ -31,10 +31,18 @@ else
                 var subtotal = item.Price * item.Quantity;
                 
                 <tr>
-                    
+                    <td>@item.Item_Name</td>
+                    <td>@item.Price.ToString</td>
+                    <td>@item.Quantity</td>
+                    <td>@subtotal.ToString</td>
                 </tr>
             }
             </tbody>
         </table>
+        
+        <h2>Order Total: @Model.Total.ToString("c")</h2>
+        
+        <button type ="submit" asp-page-handler="buy">BUy</button>
+        
     </form>
 }

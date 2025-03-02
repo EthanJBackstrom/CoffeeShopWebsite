@@ -1,44 +1,49 @@
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Newtonsoft.Json;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using TheCoffeeBean.Data;
 
 namespace TheCoffeeBean.Pages
 {
-    public class CartCheckout : PageModel
+    public class Checkoutmodel : PageModel
     {
-        public List<CartItem> Items { get; set; } = new();
-        public decimal TotalPrice { get; set; }
+        private readonly ApplicationDbContext _context;
+        private readonly UserManager<IdentityUser> _userManager;
+        public IList<CheckoutItem> Items {get; private set;}
 
-        public void OnGet()
+        public decimal Total;
+        public long AmountPayable;
+
+        public Checkoutmodel(ApplicationDbContext context, UserManager<IdentityUser> userManager)
         {
-            var basketData = HttpContext.Session.GetString("CartSession");
-
-            if (!string.IsNullOrEmpty(basketData))
-            {
-                Items = JsonConvert.DeserializeObject<List<CartItem>>(basketData) ?? new();
-            }
-
-            TotalPrice = Items.Sum(i => i.Price * i.Quantity);
-        }
-
-        public async Task<IActionResult> OnPostAsync()
-        {
-            HttpContext.Session.Remove("CartSession");
-            TempData["Message"] = "confirmation soon.";
+            _context = context;
+            _userManager = UserManager;
             
-            await Task.Delay(500);
-            return RedirectToPage("OrderSuccess");
         }
-    }
 
-    public class CartItem
-    {
-        public int Id { get; set; }
-        public string Name { get; set; } = string.Empty;
-        public int Quantity { get; set; }
-        public decimal Price { get; set; }
+        public async Task OnGetAsync()
+        {
+            var user = await _userManager.GetUserAsync(User);
+            CheckoutCustomer customer = await _db.CheckoutCusomters.FindAsync(user.Email);
+            
+            Items = _db.CheckoutItems.FromSqlRaw(
+                "SELECT FoodItem.ID, FoodItem.Price, " +
+                "FoodItem.Item_name" +
+                "BasketItem INNER JOIN BasketItems" +
+                "ON FoodItem.ID = BasketItems.StockID" +
+                "WHERE BasketID = {0}", customer.BasketID
+                ).TOList();
+                
+                Total = 0;
+
+                foreach (var item in Items)
+                {
+                    Total += (item.Quantity * item.Price);
+                }
+                AmountPayable = Total;
+            
+        }
+
     }
 }
+
