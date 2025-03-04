@@ -1,13 +1,13 @@
-using System.ComponentModel.DataAnnotations.schema;
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace TheCoffeeBean.Data
 {
-    public class CheckoutItem
+    [NotMapped]
+    public class CheckoutItem : PageModel
     {
-        [NotMapped]
-        public class CheckoutItem
-        {
+        
+        
             public int StockID { get; set; }
             public string ItemName { get; set; }
             public decimal Price { get; set; }
@@ -15,4 +15,3 @@ namespace TheCoffeeBean.Data
         }
 
     }
-}

@@ -8,12 +8,15 @@ namespace TheCoffeeBean.Data.Models
         [Key]
         public int Id { get; set; }
         [Required]
-        public int OrderId { get; set; }
+        public int OrderNo { get; set; }
         public DateTime PaymentDate { get; set; } = DateTime.Now;
+        
         [Required]
         public decimal Amount { get; set; }
         public string PaymentMethod { get; set; } = string.Empty;
         public string Status { get; set; } = "COMPLETED";
-        public Order Order { get; set; } = null!;
+
+
+        public OrderHistory OrderHistory { get; set; } = null!;
     }
 }

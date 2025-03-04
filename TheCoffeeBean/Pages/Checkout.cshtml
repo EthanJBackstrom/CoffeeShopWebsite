@@ -1,48 +1,44 @@
 ﻿@page
-@model TheCoffeeBean.Pages.CartCheckout
+@model TheCoffeeBean.Pages.CheckoutModel
+
 @{
     ViewData["Title"] = "Checkout";
 }
-@using TheCoffeeBean.Data
-@using Microsoft.Extensions.Options
 
 <h1>Checkout Basket</h1>
 
-@if (Model.Items.Count == 0)
+@if (Model.Items == null || Model.Items.Count == 0)
 {
-    <p>If Nothign is showing please go back to the menu and place an order or contact support</p>
-    
+    <p>If nothing is showing, please go back to the menu and place an order or contact support.</p>
 }
 else
 {
     <form method="post">
         <table class="table">
-            <thread>
+            <thead>
                 <tr>
                     <th>Name</th>
                     <th>Price</th>
                     <th>Quantity</th>
-                    <th>subtotal</th>
+                    <th>Subtotal</th>
                 </tr>
-            </thread>
+            </thead>
             <tbody>
-            @foreach (var item in Model.Items)
-            {
-                var subtotal = item.Price * item.Quantity;
-                
-                <tr>
-                    <td>@item.Item_Name</td>
-                    <td>@item.Price.ToString</td>
-                    <td>@item.Quantity</td>
-                    <td>@subtotal.ToString</td>
-                </tr>
-            }
+                @foreach (var item in Model.Items)
+                {
+                    var subtotal = item.Price * item.Quantity;
+                    <tr>
+                        <td>@item.ProductName</td>
+                        <td>@item.Price.ToString()</td>
+                        <td>@item.Quantity</td>
+                        <td>@subtotal.ToString()</td>
+                    </tr>
+                }
             </tbody>
         </table>
         
         <h2>Order Total: @Model.Total.ToString("c")</h2>
         
-        <button type ="submit" asp-page-handler="buy">BUy</button>
-        
+        <button type="submit" asp-page-handler="buy" class="btn btn-primary">Buy</button>
     </form>
 }

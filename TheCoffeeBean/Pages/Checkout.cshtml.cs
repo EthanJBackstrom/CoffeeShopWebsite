@@ -2,6 +2,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using TheCoffeeBean.Data;
+using TheCoffeeBean.Data.Models;
+using CheckoutItem = TheCoffeeBean.Data.CheckoutItem;
 
 namespace TheCoffeeBean.Pages
 {
@@ -11,37 +13,47 @@ namespace TheCoffeeBean.Pages
         private readonly UserManager<IdentityUser> _userManager;
         public IList<CheckoutItem> Items {get; private set;}
 
-        public decimal Total;
-        public long AmountPayable;
+        public decimal Total { get; private set; }
+        public long AmountPayable { get; private set; }
 
         public Checkoutmodel(ApplicationDbContext context, UserManager<IdentityUser> userManager)
         {
             _context = context;
-            _userManager = UserManager;
+            _userManager = userManager;
             
         }
 
         public async Task OnGetAsync()
         {
+            // grab the currently logged in user 
             var user = await _userManager.GetUserAsync(User);
-            CheckoutCustomer customer = await _db.CheckoutCusomters.FindAsync(user.Email);
-            
-            Items = _db.CheckoutItems.FromSqlRaw(
-                "SELECT FoodItem.ID, FoodItem.Price, " +
-                "FoodItem.Item_name" +
-                "BasketItem INNER JOIN BasketItems" +
-                "ON FoodItem.ID = BasketItems.StockID" +
-                "WHERE BasketID = {0}", customer.BasketID
-                ).TOList();
-                
+            if (user == null)
+            {
+                Items = new List<CheckoutItem>();
                 Total = 0;
-
-                foreach (var item in Items)
-                {
-                    Total += (item.Quantity * item.Price);
-                }
-                AmountPayable = Total;
+                AmountPayable = 0;
+                return;
+            }
             
+            //Find by Email 
+            CheckoutCustomer customer = await _context.CheckoutCustomers.FindAsync(user.Email);
+            if (customer == null)
+            {
+                Items = new List<CheckoutItem>();
+                Total = 0;
+                AmountPayable = 0;
+                return;
+            }
+            
+            Items = await _context.CheckoutItems.FromSqlRaw(
+                    "SELECT p.StockID, p.Price, p.Name as ProductName, b.Quantity " +
+                    "FROM Products p INNER JOIN BasketItems b ON p.StockID = b.StockID " +
+                    "WHERE b.BasketID = {0}", customer.BasketID)
+                .ToListAsync();
+            
+            Total = Items.Sum(item => item.Price * item.Quantity);
+            AmountPayable = (long)Total;
+
         }
 
     }
