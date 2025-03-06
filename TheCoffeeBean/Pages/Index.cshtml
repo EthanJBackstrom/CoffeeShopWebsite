@@ -1,16 +1,16 @@
 ﻿@page
-@model IndexModel
+@model MenuModel
 @{
-    ViewData["Title"] = "Home page";
+    Layout = "_Layout.cshtml";
 }
 
 
 <div class="container">
     <div class="container-text">
-    <section class="entry-section">1>
+    <section class="entry-section">
         <h1> TheCoffeeBean!</h1>
         <p>Aritisan Coffee Delivered to your Door Next Day!</p>
-        <a href="/Menu" class="btn">Our Menu</a>
+        <a asp-page="/Menu" class="btn">Our Menu</a>
     </section>
 </div>
 </div>
@@ -35,7 +35,7 @@
     <section class="Signup-Section">
         <h2>Order Soon Now!</h2>
         <p>Get 25% off your order!</p>
-        <a href="/login" class="btn">Sign Up</a>
+        <a asp-page="/login" class="btn">Sign Up</a>
     </section>
 
 

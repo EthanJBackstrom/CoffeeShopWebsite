@@ -24,6 +24,12 @@
                     <li class="nav-item">
                         <a class="nav-link" asp-page="/Index">Home</a>
                     </li>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" asp-page="/Admin/Admin">Admin Menu</a>
+                        </li>
+                    }
                     <li class="nav-item">
                         <a class="nav-link" asp-page="/Menu">Menu</a>
                     </li>
@@ -50,6 +56,8 @@ heckout                   </li>
                         <li class="nav-item">
                             <a class="nav-link" asp-area="Identity" asp-page="/Account/Register">Register</a>
                         </li>
+                        
+
                     }
                 </ul>
             </div>
