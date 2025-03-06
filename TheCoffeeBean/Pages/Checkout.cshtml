@@ -1,44 +1,45 @@
 ﻿@page
 @model TheCoffeeBean.Pages.CheckoutModel
-
 @{
     ViewData["Title"] = "Checkout";
 }
 
 <h1>Checkout Basket</h1>
 
+<!-- Check if Items is null or empty -->
 @if (Model.Items == null || Model.Items.Count == 0)
 {
-    <p>If nothing is showing, please go back to the menu and place an order or contact support.</p>
+    <p>No items in your basket. Please add something from the Menu!</p>
 }
 else
 {
     <form method="post">
         <table class="table">
             <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Price</th>
-                    <th>Quantity</th>
-                    <th>Subtotal</th>
-                </tr>
+            <tr>
+                <th>Product Name</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Subtotal</th>
+            </tr>
             </thead>
             <tbody>
-                @foreach (var item in Model.Items)
-                {
-                    var subtotal = item.Price * item.Quantity;
-                    <tr>
-                        <td>@item.ProductName</td>
-                        <td>@item.Price.ToString()</td>
-                        <td>@item.Quantity</td>
-                        <td>@subtotal.ToString()</td>
-                    </tr>
-                }
+            @foreach (var item in Model.Items)
+            {
+                var subtotal = item.Price * item.Quantity;
+                <tr>
+                    <td>@item.ProductName</td>
+                    <td>@subtotal.ToString("C")</td>
+                    <td>@item.Quantity</td>
+                    <td>@subtotal.ToString("C")</td>
+                </tr>
+            }
             </tbody>
         </table>
-        
-        <h2>Order Total: @Model.Total.ToString("c")</h2>
-        
-        <button type="submit" asp-page-handler="buy" class="btn btn-primary">Buy</button>
+
+        <h2>Order Total: @Model.Total.ToString("C")</h2>
+
+      
+        <button type="submit" asp-page-handler="Buy" class="btn btn-primary">Buy</button>
     </form>
 }

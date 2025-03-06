@@ -1,7 +1,6 @@
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using System.ComponentModel.DataAnnotations.Schema; // for [NotMapped]
-using TheCoffeeBean.Data.Models; // your models
+using TheCoffeeBean.Data.Models;
 
 namespace TheCoffeeBean.Data
 {
@@ -12,37 +11,34 @@ namespace TheCoffeeBean.Data
         {
         }
 
-        
-        public DbSet<Product> Products { get; set; }
-        public DbSet<Payment> Payments { get; set; }
-
-        
-        public DbSet<Basket> Baskets { get; set; }
-        public DbSet<BasketItem> BasketItems { get; set; }
-        public DbSet<CheckoutCustomer> CheckoutCustomers { get; set; }
-
-        
-        public DbSet<OrderHistory> OrderHistories { get; set; }
-        public DbSet<OrderItem> OrderItems { get; set; }
-
-        
-        [NotMapped]
-        public DbSet<CheckoutItem> CheckoutItems { get; set; }
+        public DbSet<Product> Products { get; set; } = null!;
+        public DbSet<Payment> Payments { get; set; } = null!;
+        public DbSet<Basket> Baskets { get; set; } = null!;
+        public DbSet<BasketItem> BasketItems { get; set; } = null!;
+        public DbSet<CheckoutCustomer> CheckoutCustomers { get; set; } = null!;
+        public DbSet<OrderHistory> OrderHistories { get; set; } = null!;
+        public DbSet<OrderItem> OrderItems { get; set; } = null!;
+        public DbSet<CheckoutItem> CheckoutItems { get; set; } = null!;
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
+          
+            modelBuilder.Entity<OrderHistory>().HasKey(oh => oh.OrderNo);
+
+          
             modelBuilder.Entity<BasketItem>()
                 .HasKey(bi => new { bi.BasketID, bi.StockID });
 
+          
             modelBuilder.Entity<OrderItem>()
                 .HasKey(oi => new { oi.OrderNo, oi.StockID });
 
-            
+      
             modelBuilder.Entity<OrderItem>()
                 .HasOne(oi => oi.OrderHistory)
-                .WithMany(h => h.OrderItems)
+                .WithMany(oh => oh.OrderItems)
                 .HasForeignKey(oi => oi.OrderNo);
 
             modelBuilder.Entity<OrderItem>()
@@ -50,14 +46,26 @@ namespace TheCoffeeBean.Data
                 .WithMany()
                 .HasForeignKey(oi => oi.StockID);
 
+       
             modelBuilder.Entity<Payment>()
                 .HasOne(p => p.OrderHistory)
                 .WithMany()
                 .HasForeignKey(p => p.OrderNo);
-            
-            modelBuilder.Entity<BasketItem>()
-                .HasKey(bi => new { bi.StockID, bi.BasketID });
 
+      
+            modelBuilder.Entity<Product>()
+                .Property(p => p.Price)
+                .HasColumnType("decimal(18,2)");
+
+           
+            modelBuilder.Entity<Payment>()
+                .Property(p => p.Amount)
+                .HasColumnType("decimal(18,2)");
+
+         
+            modelBuilder.Entity<CheckoutItem>()
+                .Property(c => c.Price)
+                .HasColumnType("decimal(18,2)");
         }
     }
 }
