@@ -54,8 +54,8 @@
             <td>@product.Price.ToString("C")</td>
             <td>@product.ImageUrl</td>
             <td>
-                <a class="btn btn-primary" asp-page="/Admin/EditProduct" asp-route-id="@product.StockID">Edit</a>
-                <a class="btn btn-danger" asp-page="/Admin/DeleteProduct" asp-route-id="@product.StockID">Delete</a>
+                <a class="btn btn-primary" asp-page="/Admin/EditProduct" asp-route-id="@product.Id">Edit</a>
+                <a class="btn btn-danger" asp-page="/Admin/DeleteProduct" asp-route-id="@product.Id">Delete</a>
             </td>
         </tr>
     }

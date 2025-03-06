@@ -9,7 +9,7 @@ namespace TheCoffeeBean.Data
     public static class IdentitySeedData
     {
         private const string AdminRole = "Admin";
-        private const string UserRole = "User"; // instead of "Member"
+        private const string UserRole = "User"; 
 
         private const string AdminEmail = "Admin@test.com";
         private const string UserEmail = "User@test.com";

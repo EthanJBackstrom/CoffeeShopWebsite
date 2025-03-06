@@ -6,7 +6,8 @@ namespace TheCoffeeBean.Data.Models
     public class Product
     {
         [Key]
-        public int StockID { get; set; }
+        public int Id { get; set; }
+        
         [Required]
         public string Name { get; set; } = null!;
         public string? Description { get; set; }

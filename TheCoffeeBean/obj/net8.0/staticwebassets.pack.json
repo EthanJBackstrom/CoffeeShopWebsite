@@ -13,12 +13,20 @@
       "PackagePath": "staticwebassets/favicon.ico"
     },
     {
+      "Id": "/home/ethan/Documents/webapp/TheCoffeeBean/wwwroot/images/5. ListViews 2022-1.pdf",
+      "PackagePath": "staticwebassets/images/5. ListViews 2022-1.pdf"
+    },
+    {
       "Id": "/home/ethan/Documents/webapp/TheCoffeeBean/wwwroot/images/Main.jpg",
       "PackagePath": "staticwebassets/images/Main.jpg"
     },
     {
       "Id": "/home/ethan/Documents/webapp/TheCoffeeBean/wwwroot/images/coffee-bag.jpg",
       "PackagePath": "staticwebassets/images/coffee-bag.jpg"
+    },
+    {
+      "Id": "/home/ethan/Documents/webapp/TheCoffeeBean/wwwroot/images/document.pdf",
+      "PackagePath": "staticwebassets/images/document.pdf"
     },
     {
       "Id": "/home/ethan/Documents/webapp/TheCoffeeBean/wwwroot/js/site.js",

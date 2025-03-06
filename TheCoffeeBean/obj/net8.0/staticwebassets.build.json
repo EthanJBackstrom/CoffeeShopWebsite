@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "LpgFSi37oYStRkhV1l86uXsBJRRvIrx5g6H8Ymn1xqs=",
+  "Hash": "0QGB4KzAOBml4wViVZqMIXmEeu6ueSrwXPTI3IA33rI=",
   "Source": "TheCoffeeBean",
   "BasePath": "_content/TheCoffeeBean",
   "Mode": "Default",
@@ -1233,6 +1233,25 @@
       "OriginalItemSpec": "wwwroot/favicon.ico"
     },
     {
+      "Identity": "/home/ethan/Documents/webapp/TheCoffeeBean/wwwroot/images/5. ListViews 2022-1.pdf",
+      "SourceId": "TheCoffeeBean",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/ethan/Documents/webapp/TheCoffeeBean/wwwroot/",
+      "BasePath": "_content/TheCoffeeBean",
+      "RelativePath": "images/5. ListViews 2022-1.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/images/5. ListViews 2022-1.pdf"
+    },
+    {
       "Identity": "/home/ethan/Documents/webapp/TheCoffeeBean/wwwroot/images/coffee-bag.jpg",
       "SourceId": "TheCoffeeBean",
       "SourceType": "Discovered",
@@ -1250,6 +1269,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/images/coffee-bag.jpg"
+    },
+    {
+      "Identity": "/home/ethan/Documents/webapp/TheCoffeeBean/wwwroot/images/document.pdf",
+      "SourceId": "TheCoffeeBean",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/ethan/Documents/webapp/TheCoffeeBean/wwwroot/",
+      "BasePath": "_content/TheCoffeeBean",
+      "RelativePath": "images/document.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/images/document.pdf"
     },
     {
       "Identity": "/home/ethan/Documents/webapp/TheCoffeeBean/wwwroot/images/Main.jpg",
