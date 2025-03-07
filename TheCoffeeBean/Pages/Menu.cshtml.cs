@@ -2,8 +2,6 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using TheCoffeeBean.Data;
 using TheCoffeeBean.Data.Models;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace TheCoffeeBean.Pages
 {
@@ -16,13 +14,28 @@ namespace TheCoffeeBean.Pages
             _context = context;
         }
 
-     
+        // search term from query string
+        public string? SearchTerm { get; set; }
+
+        // List of items 
         public IList<Product> Products { get; set; } = new List<Product>();
 
-        public async Task OnGetAsync()
+        public async Task OnGetAsync(string searchTerm)
         {
-            // Load all products from the database.
-            Products = await _context.Products.ToListAsync();
+            SearchTerm = searchTerm;
+
+            var productsQuery = _context.Products.AsQueryable();
+
+            if (!string.IsNullOrEmpty(SearchTerm))
+            {
+                Products = await productsQuery
+                    .Where(p => p.Name.Contains(SearchTerm) || (p.Description != null && p.Description.Contains(SearchTerm)))
+                    .ToListAsync();
+            }
+            else
+            {
+                Products = await productsQuery.ToListAsync();
+            }
         }
     }
 }
