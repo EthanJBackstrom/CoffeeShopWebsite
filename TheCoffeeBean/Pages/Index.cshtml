@@ -1,8 +1,10 @@
 ﻿@page
-@model MenuModel
+@model IndexModel
 @{
-    Layout = "_Layout.cshtml";
+    ViewData["Title"] = "Home page";
 }
+
+
 
 
 <div class="container">
@@ -35,7 +37,7 @@
     <section class="Signup-Section">
         <h2>Order Soon Now!</h2>
         <p>Get 25% off your order!</p>
-        <a asp-page="/login" class="btn">Sign Up</a>
+        <a asp-page="/register" class="btn">Sign Up</a>
     </section>
 
 
