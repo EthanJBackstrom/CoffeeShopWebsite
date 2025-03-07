@@ -6,6 +6,9 @@ namespace TheCoffeeBean.Data.Models
     {
         [Key]
         public int BasketID { get; set; }
+        [Required]
+        public string UserId { get; set; }
+        public List<BasketItem> Items { get; set; } = new List<BasketItem>();
     
     } 
 }

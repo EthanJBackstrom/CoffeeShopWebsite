@@ -58,6 +58,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQWRtaW4vQWRtaW4uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[/home/ethan/Documents/webapp/TheCoffeeBean/Pages/Buying/AddToBasket.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQnV5aW5nL0FkZFRvQmFza2V0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [/home/ethan/Documents/webapp/TheCoffeeBean/Pages/Checkout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQ2hlY2tvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 

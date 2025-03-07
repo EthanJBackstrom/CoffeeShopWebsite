@@ -1,0 +1,18 @@
+@page
+@model TheCoffeeBean.Pages.AddToBasketModel
+@{
+    ViewData["Title"] = "Add to Basket";
+}
+
+<h2>Add Product to Basket</h2>
+
+<form method="post">
+    
+    <input type="hidden" asp-for="StockID" />
+
+    <div class="form-group">
+        <label asp-for="Quantity">Quantity:</label>
+        <input asp-for="Quantity" class="form-control" min="1" />
+    </div>
+    <button type="submit" class="btn btn-primary">Add to Basket</button>
+</form>

@@ -4,25 +4,36 @@
     ViewData["Title"] = "Menu";
 }
 
-<h2>Menu</h2>
+<h1>Menu</h1>
 
-<div class="row">
-    @foreach (var product in Model.Products)
-    {
-        <div class="col-md-4">
-            <div class="card mb-4 shadow-sm">
-                @if (!string.IsNullOrEmpty(product.ImageUrl))
-                {
-                    <img src="@product.ImageUrl" class="card-img-top" alt="@product.Name" />
-                }
-                <div class="card-body">
-                    <h5 class="card-title">@product.Name</h5>
-                    <p class="card-text">@product.Description</p>
-                    <p class="card-text"><strong>@product.Price.ToString("C")</strong></p>
-                    
-                    <a class="btn btn-primary" asp-page="/Checkout">Add product to Cart</a>
+@if (Model.Products == null || !Model.Products.Any())
+{
+    <p>No products available.</p>
+}
+else
+{
+    <div class="row">
+        @foreach (var product in Model.Products)
+        {
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                    <img class="card-img-top" src="~/images/@product.ImageUrl" alt="@product.Name" />
+                    <div class="card-body">
+                        <h5 class="card-title">@product.Name</h5>
+                        <p class="card-text">@product.Description</p>
+                        <p class="card-text"><strong>@product.Price.ToString("C")</strong></p>
+                        <!-- Add to basket -->
+                        <form method="post" asp-page="/AddToBasket">
+                            <input type="hidden" name="StockID" value="@product.Id" />
+                            <div class="form-group">
+                                <label for="Quantity_@product.Id">Quantity:</label>
+                                <input type="number" id="Quantity_@product.Id" name="Quantity" value="1" min="1" class="form-control" style="width:80px; display:inline-block;" />
+                            </div>
+                            <button type="submit" class="btn btn-primary mt-2">Add to Basket</button>
+                        </form>
+                    </div>
                 </div>
             </div>
-        </div>
-    }
-</div>
+        }
+    </div>
+}

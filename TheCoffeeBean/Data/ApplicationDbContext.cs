@@ -30,6 +30,11 @@ namespace TheCoffeeBean.Data
           
             modelBuilder.Entity<BasketItem>()
                 .HasKey(bi => new { bi.BasketID, bi.StockID });
+            
+            modelBuilder.Entity<Basket>()
+                .HasMany(b => b.Items)
+                .WithOne(bi => bi.Basket)
+                .HasForeignKey(bi => bi.BasketID);
 
           
             modelBuilder.Entity<OrderItem>()

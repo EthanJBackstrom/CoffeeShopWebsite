@@ -21,21 +21,21 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
+                    < class="nav-item">
                         <a class="nav-link" asp-page="/Index">Home</a>
-                    </li>
-                    @if (User.IsInRole("AdminRole"))
-                    {
-                        <li class="nav-item">
-                            <a class="nav-link" asp-page="/Admin/Admin">AdminMenu</a>
-                        </li>
-                    }
+                   
                     <li class="nav-item">
                         <a class="nav-link" asp-page="/Menu">Menu</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" asp-page="/About">About</a>
                     </li>
+                    @if (User.IsInRole("AdminRole"))
+                    { 
+                        <li class="nav-item">
+                            <a class="nav-link" asp-page="/Admin/Admin">AdminMenu</a>
+                        </li>
+                    }
                     <li class="nav-item">
                         <a class="nav-link" asp-page="/Checkout">Checkout</a>
                    </li>

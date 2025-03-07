@@ -16,6 +16,7 @@ namespace TheCoffeeBean.Pages
             _context = context;
         }
 
+     
         public IList<Product> Products { get; set; } = new List<Product>();
 
         public async Task OnGetAsync()
