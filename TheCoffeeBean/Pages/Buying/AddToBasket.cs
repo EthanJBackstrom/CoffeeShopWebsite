@@ -27,17 +27,18 @@ namespace TheCoffeeBean.Pages
 
         public async Task<IActionResult> OnPostAsync()
         {
-            
+            // checks if the user is logged in  
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
                 return RedirectToPage("/Account/Login");
             }
 
-          
+           // try to find the existing basket 
             var basket = await _context.Baskets.FirstOrDefaultAsync(b => b.UserId == user.Email);
             if (basket == null)
             {
+                // creates a new basket if no exisiting is found 
                 basket = new Basket { UserId = user.Email };
                 _context.Baskets.Add(basket);
                 await _context.SaveChangesAsync(); 

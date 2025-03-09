@@ -35,7 +35,7 @@ namespace TheCoffeeBean.Pages
                 return;
             }
             
-            //Find by Email 
+            // Find the customer by the Email Address they login with  
             CheckoutCustomer customer = await _context.CheckoutCustomers.FindAsync(user.Email);
             if (customer == null)
             {

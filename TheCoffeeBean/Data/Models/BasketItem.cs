@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-
+// issues with this need to fix later 
 namespace TheCoffeeBean.Data.Models
 {
     public class BasketItem
@@ -9,7 +9,7 @@ namespace TheCoffeeBean.Data.Models
         public int Id { get; set; }
         
         [Required]
-        public int BasketID { get; set; }
+        public int BasketID { get; set; } // links 
         
         [Required]
         public int StockID { get; set; }

@@ -6,10 +6,10 @@
 
 <h1>Checkout Basket</h1>
 
-
+<!-- check if the basket has Items -->
 @if (Model.Items == null || Model.Items.Count == 0)
 {
-    <p>No items in your basket. Please add something from the Menu!</p>
+    <p>No items in Basket</p>
 }
 else
 {
@@ -37,7 +37,7 @@ else
             </tbody>
         </table>
 
-        <h2>Order Total: @Model.Total.ToString("C")</h2>
+        <h2>Total: @Model.Total.ToString("C")</h2>
 
       
         <button type="submit" asp-page-handler="Buy" class="btn btn-primary">Buy</button>

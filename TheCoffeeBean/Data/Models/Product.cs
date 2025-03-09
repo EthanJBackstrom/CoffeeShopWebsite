@@ -13,7 +13,7 @@ namespace TheCoffeeBean.Data.Models
         public string? Description { get; set; }
         [Required]
         public decimal Price { get; set; }
-        public string? ImageUrl { get; set; }
+        public string? ImageUrl { get; set; } // Images product
         public List<OrderItem> OrderItems { get; set; } = new();
     }
 }

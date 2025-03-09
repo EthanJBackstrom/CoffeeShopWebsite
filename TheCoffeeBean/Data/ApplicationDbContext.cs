@@ -10,7 +10,7 @@ namespace TheCoffeeBean.Data
             : base(options)
         {
         }
-
+        // Tables in Database 
         public DbSet<Product> Products { get; set; } = null!;
         public DbSet<Payment> Payments { get; set; } = null!;
         public DbSet<Basket> Baskets { get; set; } = null!;
@@ -19,7 +19,9 @@ namespace TheCoffeeBean.Data
         public DbSet<OrderHistory> OrderHistories { get; set; } = null!;
         public DbSet<OrderItem> OrderItems { get; set; } = null!;
         public DbSet<CheckoutItem> CheckoutItems { get; set; } = null!;
-
+             
+        //Relationships between the tables 
+        
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -57,7 +59,7 @@ namespace TheCoffeeBean.Data
                 .WithMany()
                 .HasForeignKey(p => p.OrderNo);
 
-      
+        // prevents rounding problem with the prices 
             modelBuilder.Entity<Product>()
                 .Property(p => p.Price)
                 .HasColumnType("decimal(18,2)");

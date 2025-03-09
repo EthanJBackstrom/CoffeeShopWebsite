@@ -16,7 +16,8 @@ namespace TheCoffeeBean.Data
 
         private const string AdminPassword = "Password123!";
         private const string UserPassword = "Password123!";
-
+          
+        // initializes roles at start 
         public static async Task Initialize(IServiceProvider serviceProvider)
         {
             using (var scope = serviceProvider.CreateScope())
@@ -27,15 +28,18 @@ namespace TheCoffeeBean.Data
                 var context = services.GetRequiredService<ApplicationDbContext>();
                 await context.Database.MigrateAsync();
 
+                // user role managment services 
                 
                 var userManager = services.GetRequiredService<UserManager<IdentityUser>>();
                 var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
 
-                
+                // check if admin role exists 
                 if (!await roleManager.RoleExistsAsync(AdminRole))
                 {
                     await roleManager.CreateAsync(new IdentityRole(AdminRole));
                 }
+                
+                // check if user role exists 
 
                 if (!await roleManager.RoleExistsAsync(UserRole))
                 {

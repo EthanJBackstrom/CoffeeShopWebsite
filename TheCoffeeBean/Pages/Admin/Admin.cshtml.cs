@@ -8,8 +8,10 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace TheCoffeeBean.Pages.Admin
+
+
 {
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin")] // Only useers with admin role is able toa ccess 
     public class AdminModel : PageModel
     {
         private readonly ApplicationDbContext _context;
@@ -18,7 +20,7 @@ namespace TheCoffeeBean.Pages.Admin
         {
             _context = context;
         }
-
+        // list of products 
         public IList<Product> Products { get; set; } = new List<Product>();
 
       
@@ -30,7 +32,7 @@ namespace TheCoffeeBean.Pages.Admin
             Products = await _context.Products.ToListAsync();
         }
 
-     
+        // Handles form submission 
         public async Task<IActionResult> OnPostAddProductAsync()
         {
             if (!ModelState.IsValid)
@@ -39,6 +41,8 @@ namespace TheCoffeeBean.Pages.Admin
                 Products = await _context.Products.ToListAsync();
                 return Page();
             }
+            
+            // adds new product to the database 
 
             _context.Products.Add(NewProduct);
             await _context.SaveChangesAsync();

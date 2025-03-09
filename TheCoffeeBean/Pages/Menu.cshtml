@@ -3,14 +3,14 @@
 @{
     ViewData["Title"] = "Menu";
 }
-
+<!-- Search form for searching the menu items for a specific product -->
 <form method="get">
     <div class="input-group mb-4">
         <input type="text" name="searchTerm" value="@Model.SearchTerm" placeholder="Search menu items..." class="form-control" />
         <button type="submit" class="btn btn-primary">Search</button>
     </div>
 </form>
-
+<!-- checks if there is the product -->
 @if (Model.Products.Any())
 {
     <div class="row">
@@ -25,6 +25,8 @@
                         <p class="card-text"><strong>@product.Price.ToString("C")</strong></p>
                         <form method="post">
                             <input type="hidden" name="StockID" value="@product.Id" />
+                            
+                            <!-- Quantity Selection -->
                             <div class="form-group">
                                 <label for="Quantity_@product.Id">Quantity:</label>
                                 <input type="number" id="Quantity_@product.Id" name="Quantity" value="1" min="1" class="form-control" style="width: 80px;" />
@@ -39,5 +41,5 @@
 }
 else
 {
-    <p>No products match your search.</p>
+    <p>No products match the search sorry!</p> <!-- if thers is no matching product -->
 }

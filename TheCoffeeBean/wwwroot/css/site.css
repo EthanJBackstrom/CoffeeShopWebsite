@@ -4,7 +4,7 @@ html {
   position: relative;
   min-height: 100%;
 }
-
+/* Attempt to improve site for Phones and My Wider Monitor */
 @media (min-width: 768px) {
   html {
     font-size: 16px;
@@ -29,7 +29,7 @@ a:hover {
   color: #7c5a50;
 }
 
-
+/* Primary Button used in Orders */
 .btn {
   display: inline-block;
   padding: 0.5rem 1rem;
@@ -51,7 +51,7 @@ a:hover {
   box-shadow: 0 0 0 0.1rem #fff, 0 0 0 0.25rem #258cfb;
 }
 
-
+/* Navigation bar styling */
 .navbar {
   background-color: rgba(0, 0, 0, 0.75);
   padding: 0.5rem 1rem;
@@ -71,7 +71,7 @@ a:hover {
   color: #ddd;
 }
 
-
+/* Main entry section image and button area also reffered to as a hero */
 .hero-section {
   position: relative;
   height: 80vh;
@@ -118,7 +118,7 @@ a:hover {
   padding: 1rem;
 }
 
-
+/* Showcase grid for the products */ /* should improve the image sizing or box sizing in future */
 .product-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
@@ -152,7 +152,7 @@ a:hover {
   width: calc(100% - 2rem);
 }
 
-
+ /* Signup at bottom of the page  */
 .Signup-Section {
   text-align: center;
   padding: 3rem 1rem;
@@ -167,7 +167,7 @@ a:hover {
   margin-bottom: 1rem;
 }
 
-
+/* Footer styling */
 .footer {
   padding: 1rem 0;
   background-color: #f8f9fa;

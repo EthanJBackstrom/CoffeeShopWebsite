@@ -4,7 +4,7 @@ namespace TheCoffeeBean.Data.Models
 {
 
 
-
+// Customer details during checkout 
     public class CheckoutCustomer
     {
         [Key]
