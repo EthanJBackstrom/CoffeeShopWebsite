@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace CoffeeWebStore.Pages;
+namespace TheCoffeeBean.Pages;
 
 public class PrivacyModel : PageModel
 {
@@ -16,3 +16,4 @@ public class PrivacyModel : PageModel
     {
     }
 }
+

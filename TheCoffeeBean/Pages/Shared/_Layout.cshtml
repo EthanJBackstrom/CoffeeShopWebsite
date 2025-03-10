@@ -1,52 +1,103 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>@ViewData["Title"] - CoffeeWebStore</title>
-    <script type="importmap"></script>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
-    <link rel="stylesheet" href="~/CoffeeWebStore.styles.css" asp-append-version="true"/>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - TheCoffeeBean</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/TheCoffeeBean.styles.css" asp-append-version="true" />
+    <!-- Goolge fonts (issues when not hosting locally)-->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
 <header>
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+    <!-- nav bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
         <div class="container">
-            <a class="navbar-brand" asp-area="" asp-page="/Index">CoffeeWebStore</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
+            <a class="navbar-brand" asp-page="/Index">TheCoffeeBean</a>
+            
+            <!-- buttons for mobile phones or smaller screens like a hamburger menu -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
+                    aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                <ul class="navbar-nav flex-grow-1">
+            
+            <!-- links on the navbar --> 
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ms-auto">
+                    < class="nav-item">
+                    <a class="nav-link" asp-page="/Index">Home</a>
+
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
+                        <a class="nav-link" asp-page="/Menu">Menu</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
+                        <a class="nav-link" asp-page="/About">About</a>
                     </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" asp-page="/Admin/Admin">Admin</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-page="/Checkout">Checkout</a>
+                    </li>
+                    
+                    <!-- Different options on the menu based if users are logged in or not (admin later)-->
+                    @if (User.Identity?.IsAuthenticated == true)
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="Identity" asp-page="/Account/Manage/Index">My Account</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="Identity" asp-page="/Account/Logout">Logout</a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="Identity" asp-page="/Account/Login">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="Identity" asp-page="/Account/Register">Register</a>
+                        </li>
+
+
+                    }
                 </ul>
             </div>
         </div>
     </nav>
+    
+    <!-- Hero or Main banner area -->
+
+    <section class="hero-section d-flex align-items-center justify-content-center">
+        <div class="hero-content text-center">
+            <h1 class="display-3 text-white fw-bold">Welcome to TheCoffeeBean</h1>
+            <p class="lead text-white-50">Small Batch Roasted Coffee, Handcrafted Recipes</p>
+            <a class="btn btn-lg btn-primary" asp-page="/Menu">Explore Our Menu</a>
+        </div>
+    </section>
 </header>
-<div class="container">
-    <main role="main" class="pb-3">
+<div class="container mt-5 pt-5">
+    <main role="main">
         @RenderBody()
     </main>
 </div>
-
 <footer class="border-top footer text-muted">
     <div class="container">
-        &copy; 2024 - CoffeeWebStore - <a asp-area="" asp-page="/Privacy">Privacy</a>
+        &copy; 2025 - TheCoffeeBean - <a asp-page="/Privacy">Privacy</a>
+        
     </div>
+    
 </footer>
+<a href="https://validator.w3.org/#validate_by_uri">Validate HTML</a>
+<a href="https://jigsaw.w3.org/css-validator/">Validate CSS</a>
 
+    
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
 <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <script src="~/js/site.js" asp-append-version="true"></script>
-
 @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

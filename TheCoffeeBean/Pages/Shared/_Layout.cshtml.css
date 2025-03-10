@@ -11,16 +11,21 @@ a {
   color: #0077cc;
 }
 
+a:hover a:focus {
+  color: #C69C6D;
+  text-decoration: underline;
+
 .btn-primary {
   color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+  background-color: #4B3D30;
+  padding: 0.6rem 1.2rem; 
+  border-color: #C69C6D;
 }
 
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
   color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+  background-color: #4B3D30;
+  border-color: #C69C6D;
 }
 
 .border-top {
@@ -32,6 +37,15 @@ a {
 
 .box-shadow {
   box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+  transition: box-shadow 0.3s ease;
+}
+
+.box-shadow:hover {
+  box-shadow: 0. 0.5rem 1rem rgba(0, 0, 0, 0.1);
+}
+
+.box-shadow:hover {
+  box-shadow: 0. 0.5rem 1rem rgba(0, 0, 0, 0.1);
 }
 
 button.accept-policy {

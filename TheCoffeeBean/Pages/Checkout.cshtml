@@ -1,0 +1,45 @@
+﻿@page
+@model TheCoffeeBean.Pages.CheckoutModel
+@{
+    ViewData["Title"] = "Checkout";
+}
+
+<h1>Checkout Basket</h1>
+
+<!-- check if the basket has Items -->
+@if (Model.Items == null || Model.Items.Count == 0)
+{
+    <p>No items in Basket</p>
+}
+else
+{
+    <form method="post">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Product Name</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Subtotal</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (var item in Model.Items)
+            {
+                var subtotal = item.Price * item.Quantity;
+                <tr>
+                    <td>@item.ProductName</td>
+                    <td>@subtotal.ToString("C")</td>
+                    <td>@item.Quantity</td>
+                    <td>@subtotal.ToString("C")</td>
+                </tr>
+            }
+            </tbody>
+        </table>
+
+        <h2>Total: @Model.Total.ToString("C")</h2>
+
+      
+        <button type="submit" asp-page-handler="Buy" class="btn btn-primary">Buy</button>
+    </form>
+}
