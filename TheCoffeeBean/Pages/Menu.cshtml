@@ -6,7 +6,7 @@
 <!-- Search form for searching the menu items for a specific product -->
 <form method="get">
     <div class="input-group mb-4">
-        <input type="text" name="searchTerm" value="@Model.SearchTerm" placeholder="Search menu items..." class="form-control" />
+        <input type="text" name="searchTerm" value="@Model.SearchTerm" placeholder="Search menu :)" class="form-control" />
         <button type="submit" class="btn btn-primary">Search</button>
     </div>
 </form>
@@ -16,6 +16,7 @@
     <div class="row">
         @foreach (var product in Model.Products)
         {
+            // using bootstrap styling 
             <div class="col-md-4">
                 <div class="card mb-4 shadow-sm">
                     <img class="card-img-top" src="~/images/@product.ImageUrl" alt="@product.Name" />
